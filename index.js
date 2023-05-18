@@ -9,7 +9,7 @@ const request = require("request"),
   { urlencoded, json } = require("body-parser"),
   app = express();
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 
 // Parse application/x-www-form-urlencoded
 app.use(urlencoded({ extended: true }));
