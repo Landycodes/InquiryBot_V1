@@ -9,17 +9,17 @@ const request = require("request"),
   { urlencoded, json } = require("body-parser"),
   app = express();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 1337;
 
 // Parse application/x-www-form-urlencoded
 app.use(urlencoded({ extended: true }));
 
 // Parse application/json
-app.use(json({ verify: verifyRequestSignature }));
+app.use(json());
 
 // Respond with 'Hello World' when a GET request is made to the homepage
 app.get("/", function (_req, res) {
-  res.send("Hello World");
+  res.send("Inquiry Bot is live!");
 });
 
 // Adds support for GET requests to our webhook
@@ -49,6 +49,7 @@ app.get("/webhook", (req, res) => {
 // Creates the endpoint for your webhook
 app.post("/webhook", (req, res) => {
   let body = req.body;
+  console.log(body);
 
   // Checks if this is an event from a page subscription
   if (body.object === "page") {
