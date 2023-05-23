@@ -17,7 +17,7 @@ app.use(urlencoded({ extended: true }));
 // Parse application/json
 app.use(json());
 
-// Respond with 'Hello World' when a GET request is made to the homepage
+// Respond with 'Inquiry Bot is live!' when a GET request is made to the homepage
 app.get("/", function (_req, res) {
   res.send("Inquiry Bot is live!");
 });
@@ -26,6 +26,7 @@ app.get("/", function (_req, res) {
 app.get("/webhook", (req, res) => {
   // Your verify token. Should be a random string.
   const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
+  console.log(req.query);
 
   // Parse the query params
   let mode = req.query["hub.mode"];
@@ -49,7 +50,6 @@ app.get("/webhook", (req, res) => {
 // Creates the endpoint for your webhook
 app.post("/webhook", (req, res) => {
   let body = req.body;
-  console.log(body);
 
   // Checks if this is an event from a page subscription
   if (body.object === "page") {
@@ -57,8 +57,9 @@ app.post("/webhook", (req, res) => {
     body.entry.forEach(function (entry) {
       // Gets the body of the webhook event
       let webhookEvent = entry.messaging[0];
-      console.log(webhookEvent);
+      // console.log(webhookEvent);
 
+      //comment out rest of post request when testing locally
       // Get the sender PSID
       let senderPsid = webhookEvent.sender.id;
       console.log("Sender PSID: " + senderPsid);
@@ -67,8 +68,11 @@ app.post("/webhook", (req, res) => {
       // pass the event to the appropriate handler function
       if (webhookEvent.message) {
         handleMessage(senderPsid, webhookEvent.message);
+        console.log(webhookEvent.message.text);
       } else if (webhookEvent.postback) {
         handlePostback(senderPsid, webhookEvent.postback);
+        console.log(webhookEvent.postback.title);
+        console.log(webhookEvent.postback.payload);
       }
     });
 
