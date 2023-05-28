@@ -8,7 +8,8 @@ const request = require("request"),
   express = require("express"),
   { urlencoded, json } = require("body-parser"),
   app = express(),
-  routes = require("./routes");
+  routes = require("./routes"),
+  crypto = require("crypto");
 
 const PORT = process.env.PORT || 1337;
 
