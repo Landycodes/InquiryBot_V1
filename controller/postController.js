@@ -7,9 +7,9 @@ module.exports = {
     console.log("-----------BODY-----------");
     console.log(body);
     console.log("________________________");
-    console.log('------------STANDBY----------');
-    console.log(body.entry.standby[0]);
-    console.log('_________________________')
+    console.log("------------STANDBY----------");
+    console.log(body.entry.standby);
+    console.log("_________________________");
     // Checks if this is an event from a page subscription
     if (body.object === "page") {
       // Iterates over each entry - there may be multiple if batched
