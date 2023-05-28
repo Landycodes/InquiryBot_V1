@@ -7,15 +7,16 @@ module.exports = {
     console.log("-----------BODY-----------");
     console.log(body);
     console.log("________________________");
-    console.log("------------STANDBY----------");
-    console.log(body.entry.standby);
-    console.log("_________________________");
+
     // Checks if this is an event from a page subscription
     if (body.object === "page") {
       // Iterates over each entry - there may be multiple if batched
       body.entry.forEach(function (entry) {
         // Gets the body of the webhook event
         let webhookEvent = entry.standby[0];
+        console.log("------------STANDBY----------");
+        console.log(webhookEvent);
+        console.log("_________________________");
         //comment out rest of post request when testing locally
         // Get the sender PSID
         let senderPsid = webhookEvent.sender.id;

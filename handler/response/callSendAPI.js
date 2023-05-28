@@ -32,3 +32,5 @@ module.exports = {
     );
   },
 };
+
+module.exports = callSendAPI;
