@@ -24,7 +24,6 @@ module.exports = {
         } else if (webhookEvent.postback) {
           handlePostback(senderPsid, webhookEvent.postback);
           console.log(webhookEvent.postback.title);
-          console.log(webhookEvent.postback.payload);
         }
       });
 
