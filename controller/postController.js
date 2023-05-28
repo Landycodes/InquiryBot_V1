@@ -4,14 +4,15 @@ const handlePostback = require("../handler/handlePostback");
 module.exports = {
   postWebhook(req, res) {
     let body = req.body;
+    console.log("-----------BODY-----------");
     console.log(body);
+    console.log("________________________");
     // Checks if this is an event from a page subscription
     if (body.object === "page") {
       // Iterates over each entry - there may be multiple if batched
       body.entry.forEach(function (entry) {
         // Gets the body of the webhook event
         let webhookEvent = entry.standby[0];
-        console.log(webhookEvent);
         //comment out rest of post request when testing locally
         // Get the sender PSID
         let senderPsid = webhookEvent.sender.id;
@@ -20,9 +21,11 @@ module.exports = {
         // pass the event to the appropriate handler function
         if (webhookEvent.message) {
           handleMessage(senderPsid, webhookEvent.message);
+          console.log("MESSAGE");
           console.log(webhookEvent.message.text);
         } else if (webhookEvent.postback) {
           handlePostback(senderPsid, webhookEvent.postback);
+          console.log("POSTBACK");
           console.log(webhookEvent.postback.title);
         }
       });
