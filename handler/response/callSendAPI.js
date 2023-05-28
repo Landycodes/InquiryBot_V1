@@ -1,3 +1,5 @@
+request = require("request");
+
 // Sends response messages via the Send API
 function callSendAPI(senderPsid, response) {
   // The page access token we have generated in your app settings

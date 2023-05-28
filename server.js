@@ -4,8 +4,7 @@
 require("dotenv").config();
 
 // Imports dependencies and set up http server
-const request = require("request"),
-  express = require("express"),
+const express = require("express"),
   { urlencoded, json } = require("body-parser"),
   app = express(),
   routes = require("./routes"),
