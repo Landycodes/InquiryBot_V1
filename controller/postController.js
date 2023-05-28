@@ -10,7 +10,7 @@ module.exports = {
       // Iterates over each entry - there may be multiple if batched
       body.entry.forEach(function (entry) {
         // Gets the body of the webhook event
-        let webhookEvent = entry.messaging[0];
+        let webhookEvent = entry.standby[0];
         console.log(webhookEvent);
         //comment out rest of post request when testing locally
         // Get the sender PSID
