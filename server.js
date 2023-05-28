@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 1337;
 app.use(urlencoded({ extended: true }));
 
 // Parse application/json
-app.use(json({ verify: verifyRequestSignature }));
+app.use(json());
 
 app.use(routes);
 
