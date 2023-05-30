@@ -12,7 +12,6 @@ function callSendAPI(senderPsid, response) {
         recipient: {
           id: senderPsid,
         },
-        messaging_type: "RESPONSE",
         message: response,
       };
       console.log(requestBody);
@@ -26,9 +25,9 @@ function callSendAPI(senderPsid, response) {
           json: requestBody,
         },
         (err, _res, _body) => {
+          console.log("********request sent*******");
           if (!err) {
             resolve("Message sent!");
-            console.log(_body);
           } else {
             reject("Unable to send message:" + err);
           }

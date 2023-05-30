@@ -17,7 +17,6 @@ function handlePostback(senderPsid, receivedPostback) {
   }
   // Send the message to acknowledge the postback
   callSendAPI(senderPsid, response);
-  console.log(response);
 }
 
 module.exports = handlePostback;
