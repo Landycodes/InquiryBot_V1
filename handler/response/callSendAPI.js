@@ -12,7 +12,7 @@ function callSendAPI(senderPsid, response) {
     },
     message: response,
   };
-
+  console.log(requestBody);
   // Send the HTTP request to the Messenger Platform
   request(
     {
