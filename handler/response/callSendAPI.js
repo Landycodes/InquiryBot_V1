@@ -12,6 +12,7 @@ function callSendAPI(senderPsid, response) {
         recipient: {
           id: senderPsid,
         },
+        messaging_type: "RESPONSE",
         message: response,
       };
       console.log(requestBody);
@@ -19,7 +20,7 @@ function callSendAPI(senderPsid, response) {
       // Send the HTTP request to the Messenger Platform
       request(
         {
-          uri: "https://graph.facebook.com/v17.0/me/messages",
+          uri: "https://graph.facebook.com/v6.0/me/messages",
           qs: { access_token: PAGE_ACCESS_TOKEN },
           method: "POST",
           json: requestBody,
