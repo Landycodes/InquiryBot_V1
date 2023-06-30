@@ -16,7 +16,18 @@ function handlePostback(senderPsid, receivedPostback) {
     response = { text: "Oops, try sending another image." };
   }
   // Send the message to acknowledge the postback
-  callSendAPI(senderPsid, response);
+  console.log("----HANDLEPOSTBACK----");
+  console.log(senderPsid);
+  console.log(response);
+
+  try {
+    callSendAPI(senderPsid, response);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
+// callSendAPI("6143614182425714", {
+//   text: "Hello, world!",
+// });
 module.exports = handlePostback;

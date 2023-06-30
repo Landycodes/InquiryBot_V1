@@ -40,4 +40,7 @@ function callSendAPI(senderPsid, response) {
   });
 }
 
+// callSendAPI("6143614182425714", {
+//   text: "Hello, world!",
+// });
 module.exports = callSendAPI;
