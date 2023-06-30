@@ -1,5 +1,5 @@
 const request = require("request");
-require("dotenv").config();
+require("dotenv").config({ path: "../../.env" });
 
 // Sends response messages via the Send API
 function callSendAPI(senderPsid, response) {
