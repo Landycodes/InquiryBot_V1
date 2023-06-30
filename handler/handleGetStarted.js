@@ -1,0 +1,37 @@
+const request = require("request");
+require("dotenv").config({ path: "../.env" });
+
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+
+let handleGetStarted = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      let url = `https://graph.facebook.com/v7.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`;
+      let request_body = {
+        get_started: {
+          payload: "GET_STARTED",
+        },
+      };
+      // Send the HTTP request to the Messenger Platform
+      request(
+        {
+          uri: url,
+          method: "POST",
+          json: request_body,
+        },
+        (err, res, body) => {
+          if (!err) {
+            resolve("Done!");
+          } else {
+            reject("Unable to Get Started:" + err);
+          }
+        }
+      );
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+module.exports = handleGetStarted;
+//WORKING ON SETTING UP 'GET STARTED' BUTTON ON INITAL CHAT

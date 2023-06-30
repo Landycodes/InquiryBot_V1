@@ -8,7 +8,8 @@ const express = require("express"),
   { urlencoded, json } = require("body-parser"),
   app = express(),
   routes = require("./routes"),
-  crypto = require("crypto");
+  crypto = require("crypto"),
+  handleGetStarted = require("./handler/handleGetStarted");
 
 const PORT = process.env.PORT || 1337;
 
@@ -44,7 +45,16 @@ function verifyRequestSignature(req, res, buf) {
   }
 }
 
+const getStarted = async (req, res) => {
+  try {
+    await handleGetStarted();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 // listen for requests :)
 var listener = app.listen(PORT, function () {
+  getStarted();
   console.log("Your app is listening on port " + listener.address().port);
 });
