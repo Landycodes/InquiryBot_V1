@@ -20,11 +20,7 @@ function handlePostback(senderPsid, receivedPostback) {
   console.log(senderPsid);
   console.log(response);
 
-  try {
-    callSendAPI(senderPsid, response);
-  } catch (err) {
-    console.error(err);
-  }
+  callSendAPI(senderPsid, response);
 }
 
 // callSendAPI("6143614182425714", {
