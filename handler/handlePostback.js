@@ -1,7 +1,7 @@
 const callSendAPI = require("./response/callSendAPI");
 
 // Handles messaging_postbacks events
-function handlePostback(senderPsid, receivedPostback) {
+async function handlePostback(senderPsid, receivedPostback) {
   let response;
 
   // Get the payload for the postback
@@ -20,7 +20,7 @@ function handlePostback(senderPsid, receivedPostback) {
   console.log(senderPsid);
   console.log(response);
 
-  callSendAPI(senderPsid, response);
+  await callSendAPI(senderPsid, response);
 }
 
 // callSendAPI("6143614182425714", {
