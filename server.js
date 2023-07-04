@@ -18,7 +18,6 @@ app.use(urlencoded({ extended: true }));
 
 // Parse application/json
 app.use(json());
-app.use(getStarted);
 app.use(routes);
 
 // Respond with 'Inquiry Bot is live!' when a GET request is made to the homepage
