@@ -30,13 +30,17 @@ function callSendAPI(senderPsid, response) {
         },
         (err, _res, _body) => {
           console.log("********request sent*******");
+          console.log(_body);
           if (!err) {
+            console.log("wooooo!!!");
             resolve("Message sent!");
           } else {
+            console.log("something fucked up :(");
             reject("Unable to send message:" + err);
           }
         }
       );
+      console.log("request has been sent");
     } catch (err) {
       reject(err);
     }

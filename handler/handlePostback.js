@@ -1,4 +1,5 @@
 const callSendAPI = require("./response/callSendAPI");
+require("dotenv").config({ path: "../.env" });
 
 // Handles messaging_postbacks events
 function handlePostback(senderPsid, receivedPostback) {
@@ -22,6 +23,12 @@ function handlePostback(senderPsid, receivedPostback) {
   console.log("calling callsendAPI function");
   callSendAPI(senderPsid, response);
 }
+
+// handlePostback("6143614182425714", {
+//   title: "Get Started",
+//   payload: "GET_STARTED",
+//   mid: "m_BHt2to3PDRPh4UKR228MR9UQ4JT0nusreInPO83myKW3QnoasZ27uan28i67O1YbP4FPm3wNdxHMwXjZ7O9fQQ",
+// });
 
 // callSendAPI("6143614182425714", {
 //   text: "Hello, world!",
