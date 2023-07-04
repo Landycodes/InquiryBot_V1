@@ -55,5 +55,6 @@ const getStarted = async (req, res, next) => {
 
 // listen for requests :)
 var listener = app.listen(PORT, function () {
+  getStarted();
   console.log("Your app is listening on port " + listener.address().port);
 });

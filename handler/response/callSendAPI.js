@@ -17,6 +17,7 @@ function callSendAPI(senderPsid, response) {
       };
       console.log("-------callSend Request body-------");
       console.log(requestBody);
+      console.log('sending request')
 
       // Send the HTTP request to the Messenger Platform
       request(
