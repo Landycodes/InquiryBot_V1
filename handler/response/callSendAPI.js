@@ -15,14 +15,15 @@ function callSendAPI(senderPsid, response) {
         },
         message: response,
       };
-      console.log("-------callSend Request body-------");
+      console.log("-------callSendAPI Request body-------");
       console.log(requestBody);
-      console.log('sending request')
 
       // Send the HTTP request to the Messenger Platform
+      console.log("sending request...");
+
       request(
         {
-          uri: "https://graph.facebook.com/v6.0/me/messages",
+          uri: "https://graph.facebook.com/v16.0/me/messages",
           qs: { access_token: PAGE_ACCESS_TOKEN },
           method: "POST",
           json: requestBody,

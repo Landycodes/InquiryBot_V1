@@ -2,6 +2,8 @@ const callSendAPI = require("./response/callSendAPI");
 
 // Handles messaging_postbacks events
 function handlePostback(senderPsid, receivedPostback) {
+  console.log("----Running handlePostback()----");
+
   let response;
 
   // Get the payload for the postback
@@ -17,10 +19,7 @@ function handlePostback(senderPsid, receivedPostback) {
     response = { text: "Oops, try sending another image." };
   }
   // Send the message to acknowledge the postback
-  console.log("----HANDLEPOSTBACK----");
-  console.log(senderPsid);
-  console.log(response);
-
+  console.log("calling callsendAPI function");
   callSendAPI(senderPsid, response);
 }
 
