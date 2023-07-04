@@ -4,9 +4,9 @@ const handlePostback = require("../handler/handlePostback");
 module.exports = {
   postWebhook(req, res) {
     let body = req.body;
-    console.log("-----------BODY-----------");
-    console.log(body);
-    console.log("________________________");
+    // console.log("-----------BODY-----------");
+    // console.log(body);
+    // console.log("________________________");
 
     // Checks if this is an event from a page subscription
     if (body.object === "page") {

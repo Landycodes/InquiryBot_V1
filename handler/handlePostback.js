@@ -1,5 +1,5 @@
 const callSendAPI = require("./response/callSendAPI");
-// require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "../.env" });
 
 // Handles messaging_postbacks events
 function handlePostback(senderPsid, receivedPostback) {
@@ -21,7 +21,9 @@ function handlePostback(senderPsid, receivedPostback) {
   }
   // Send the message to acknowledge the postback
   console.log("calling callsendAPI function");
-  callSendAPI(senderPsid, response);
+  callSendAPI(senderPsid, response)
+    .then((data) => console.log(`Response: ${data}`))
+    .catch((err) => console.log(err));
 }
 
 // handlePostback("6143614182425714", {
