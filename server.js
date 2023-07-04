@@ -44,13 +44,12 @@ function verifyRequestSignature(req, res, buf) {
   }
 }
 
-const getStarted = async (req, res, next) => {
+const getStarted = async (req, res) => {
   try {
     await handleGetStarted();
   } catch (err) {
     console.error(err);
   }
-  next();
 };
 
 // listen for requests :)

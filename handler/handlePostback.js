@@ -1,5 +1,5 @@
 const callSendAPI = require("./response/callSendAPI");
-require("dotenv").config({ path: "../.env" });
+// require("dotenv").config({ path: "../.env" });
 
 // Handles messaging_postbacks events
 function handlePostback(senderPsid, receivedPostback) {

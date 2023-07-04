@@ -19,7 +19,7 @@ function callSendAPI(senderPsid, response) {
       console.log(requestBody);
 
       // Send the HTTP request to the Messenger Platform
-      console.log("sending request...");
+      console.log("sending request... 🤓");
 
       request(
         {
@@ -29,18 +29,21 @@ function callSendAPI(senderPsid, response) {
           json: requestBody,
         },
         (err, _res, _body) => {
-          console.log("********request sent*******");
-          console.log(_body);
-          if (!err) {
-            console.log("wooooo!!!");
+          console.log("request sent... 🙏");
+          if (!err && !_body.error) {
+            console.log("Success!!! 🎉");
             resolve("Message sent!");
+          } else if (_body === undefined) {
+            console.log("Didnt get a response object 😕");
+            reject(err);
           } else {
-            console.log("something fucked up :(");
+            console.log("something fucked up 🤬");
+            console.log(_body);
+            console.log("😡 🤬 😤 😖");
             reject("Unable to send message:" + err);
           }
         }
       );
-      console.log("request has been sent");
     } catch (err) {
       reject(err);
     }

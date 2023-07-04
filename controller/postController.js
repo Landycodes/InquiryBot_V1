@@ -1,6 +1,5 @@
 const handleMessage = require("../handler/handleMessage");
 const handlePostback = require("../handler/handlePostback");
-require("dotenv").config("../.env");
 
 module.exports = {
   postWebhook(req, res) {
