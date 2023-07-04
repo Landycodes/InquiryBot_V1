@@ -18,7 +18,7 @@ app.use(urlencoded({ extended: true }));
 
 // Parse application/json
 app.use(json());
-
+app.use(getStarted);
 app.use(routes);
 
 // Respond with 'Inquiry Bot is live!' when a GET request is made to the homepage
@@ -45,16 +45,16 @@ function verifyRequestSignature(req, res, buf) {
   }
 }
 
-const getStarted = async (req, res) => {
+const getStarted = async (req, res, next) => {
   try {
     await handleGetStarted();
   } catch (err) {
     console.error(err);
   }
+  next();
 };
 
 // listen for requests :)
 var listener = app.listen(PORT, function () {
-  getStarted();
   console.log("Your app is listening on port " + listener.address().port);
 });

@@ -34,4 +34,3 @@ let handleGetStarted = () => {
 };
 
 module.exports = handleGetStarted;
-//WORKING ON SETTING UP 'GET STARTED' BUTTON ON INITAL CHAT
