@@ -4,9 +4,9 @@ const handlePostback = require("../handler/handlePostback");
 module.exports = {
   postWebhook(req, res) {
     let body = req.body;
-    // console.log("-----------BODY-----------");
-    // console.log(body);
-    // console.log("________________________");
+    console.log("-----------BODY-----------");
+    console.log(body);
+    console.log("________________________");
 
     // Checks if this is an event from a page subscription
     if (body.object === "page") {
@@ -48,3 +48,9 @@ module.exports = {
     }
   },
 };
+
+// handlePostback("6143614182425714", {
+//   title: "Get Started",
+//   payload: "GET_STARTED",
+//   mid: "m_BHt2to3PDRPh4UKR228MR9UQ4JT0nusreInPO83myKW3QnoasZ27uan28i67O1YbP4FPm3wNdxHMwXjZ7O9fQQ",
+// });
