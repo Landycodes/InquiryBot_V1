@@ -36,12 +36,23 @@ module.exports = {
         } else if (webhookEvent.postback) {
           console.log("POSTBACK");
           console.log(webhookEvent.postback.payload);
-          handlePostback(senderPsid, webhookEvent.postback);
+          handlePostback(senderPsid, webhookEvent.postback)
+            .then((data) => {
+              if (data && !data.error) {
+                res.status(200).send("EVENT_RECEIVED");
+              } else {
+                res.sendStatus(404);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(400).send("BAD_REQUEST");
+            });
         }
       });
 
       // Returns a '200 OK' response to all requests
-      res.status(200).send("EVENT_RECEIVED");
+      // res.status(200).send("EVENT_RECEIVED");
     } else {
       // Returns a '404 Not Found' if event is not from a page subscription
       res.sendStatus(404);
@@ -51,6 +62,6 @@ module.exports = {
 
 // handlePostback("6143614182425714", {
 //   title: "Get Started",
-//   payload: "GET_STARTED",
+//   payload: "GE_STARTED",
 //   mid: "m_BHt2to3PDRPh4UKR228MR9UQ4JT0nusreInPO83myKW3QnoasZ27uan28i67O1YbP4FPm3wNdxHMwXjZ7O9fQQ",
 // });

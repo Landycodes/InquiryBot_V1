@@ -18,12 +18,10 @@ function handlePostback(senderPsid, receivedPostback) {
     };
   } else if (payload === "no") {
     response = { text: "Oops, try sending another image." };
-  }
+  } else response = { text: "Unknown Payload" };
   // Send the message to acknowledge the postback
   console.log("calling callsendAPI function");
-  callSendAPI(senderPsid, response)
-    .then((data) => console.log(`Response: ${data}`))
-    .catch((err) => console.log(err));
+  return callSendAPI(senderPsid, response);
 }
 
 // handlePostback("6143614182425714", {

@@ -21,29 +21,35 @@ function callSendAPI(senderPsid, response) {
       // Send the HTTP request to the Messenger Platform
       console.log("sending request... 🤓");
 
-      request(
-        {
-          uri: "https://graph.facebook.com/v16.0/me/messages",
-          qs: { access_token: PAGE_ACCESS_TOKEN },
-          method: "POST",
-          json: requestBody,
-        },
-        (err, _res, _body) => {
-          console.log("request sent... 🙏");
-          if (!err && !_body.error) {
-            console.log("Success!!! 🎉");
-            resolve("Message sent!");
-          } else if (_body === undefined) {
-            console.log("Didnt get a response object 😕");
-            reject(err);
-          } else {
-            console.log("something fucked up 🤬");
-            console.log(_body);
-            console.log("😡 🤬 😤 😖");
-            reject("Unable to send message:" + err);
+      if (requestBody.message.text == "Unknown Payload") {
+        reject("Unknown Payload");
+        return;
+      } else {
+        request(
+          {
+            uri: "https://graph.facebook.com/v16.0/me/messages",
+            qs: { access_token: PAGE_ACCESS_TOKEN },
+            method: "POST",
+            json: requestBody,
+          },
+          (err, _res, _body) => {
+            console.log("request sent... 🙏");
+            if (!err) {
+              console.log("Success!!! 🎉");
+              resolve(requestBody.message);
+            } else if (_body === undefined) {
+              console.log("Didnt get a response object 😕");
+              reject(err);
+            } else {
+              console.log("something fucked up 🤬");
+              console.log(_body);
+              console.log(requestBody.message);
+              console.log("😡 🤬 😤 😖");
+              reject("Unable to send message: " + err);
+            }
           }
-        }
-      );
+        );
+      }
     } catch (err) {
       reject(err);
     }
