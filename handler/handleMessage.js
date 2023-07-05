@@ -44,7 +44,7 @@ function handleMessage(senderPsid, receivedMessage) {
   }
 
   // Send the response message
-  callSendAPI(senderPsid, response);
+  // callSendAPI(senderPsid, response);
 }
 
 module.exports = handleMessage;
