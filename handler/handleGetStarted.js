@@ -11,6 +11,12 @@ let handleGetStarted = () => {
         get_started: {
           payload: "GET_STARTED",
         },
+        greeting: [
+          {
+            locale: "default",
+            text: "Welcome {{user_first_name}}!",
+          },
+        ],
       };
       // Send the HTTP request to the Messenger Platform
       request(
@@ -32,5 +38,7 @@ let handleGetStarted = () => {
     }
   });
 };
-
+// handleGetStarted();
 module.exports = handleGetStarted;
+//you can run this file solo to set the getStarted button
+//or wait for the server to run it automatically
