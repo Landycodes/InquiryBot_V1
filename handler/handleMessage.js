@@ -1,7 +1,7 @@
 const callSendAPI = require("./response/callSendAPI");
 
 // Handles messages events
-function handleMessage(senderPsid, receivedMessage) {
+async function handleMessage(senderPsid, receivedMessage) {
   let response;
 
   // Checks if the message contains text
@@ -44,7 +44,7 @@ function handleMessage(senderPsid, receivedMessage) {
   }
 
   // Send the response message
-  callSendAPI(senderPsid, response);
+  return await callSendAPI(senderPsid, response);
 }
 
 module.exports = handleMessage;
