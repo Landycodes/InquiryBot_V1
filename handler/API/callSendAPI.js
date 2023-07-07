@@ -4,7 +4,7 @@ const axios = require("axios");
 require("dotenv").config({ path: "../../.env" });
 
 // Sends response messages via the Send API
-function callSendAPI(senderPsid, response) {
+function sendMessage(senderPsid, response) {
   // The page access token we have generated in your app settings
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
@@ -75,4 +75,4 @@ function callSendAPI(senderPsid, response) {
 // callSendAPI("6143614182425714", {
 //   text: "Hello, world!",
 // });
-module.exports = callSendAPI;
+module.exports = sendMessage;
