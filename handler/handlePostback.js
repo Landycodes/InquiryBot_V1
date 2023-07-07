@@ -1,3 +1,4 @@
+const welcomeUser = require("./responses/welcomeUser");
 const callSendAPI = require("./sendMessage/callSendAPI");
 require("dotenv").config({ path: "../.env" });
 
@@ -5,25 +6,31 @@ require("dotenv").config({ path: "../.env" });
 async function handlePostback(senderPsid, receivedPostback) {
   console.log("----Running handlePostback()----");
 
-  let response;
+  // let response;
 
   // Get the payload for the postback
   let payload = receivedPostback.payload;
   console.log(`payload = ${payload}`);
 
   // Set the response based on the postback payload
-  if (payload === "GET_STARTED") {
-    response = {
-      text: "Welcome to AZtechmart! I am AZtechbot 🤖 How can I help you today?",
-    };
-  } else if (payload === "no") {
-    response = { text: "Oops, try sending another image." };
-  } else {
-    response = { text: "Unknown Payload" };
+  switch (payload) {
+    case "GET_STARTED":
+      await welcomeUser(senderPsid);
+      break;
+    default:
+      console.log("Unknown Payload");
   }
-  // Send the message to acknowledge the postback
-  console.log("calling callsendAPI function");
-  return await callSendAPI(senderPsid, response);
+  //   if (payload === "GET_STARTED") {
+  //     welcomeUser(senderPsid);
+  //     return;
+  //   } else if (payload === "no") {
+  //     response = { text: "Oops, try sending another image." };
+  //   } else {
+  //     response = { text: "Unknown Payload" };
+  //   }
+  //   // Send the message to acknowledge the postback
+  //   console.log("calling callsendAPI function");
+  //   return await callSendAPI(senderPsid, response);
 }
 
 // handlePostback("6143614182425714", {
