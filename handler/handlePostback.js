@@ -1,4 +1,4 @@
-const callSendAPI = require("./response/callSendAPI");
+const callSendAPI = require("./sendMessage/callSendAPI");
 require("dotenv").config({ path: "../.env" });
 
 // Handles messaging_postbacks events
@@ -18,7 +18,9 @@ async function handlePostback(senderPsid, receivedPostback) {
     };
   } else if (payload === "no") {
     response = { text: "Oops, try sending another image." };
-  } else response = { text: "Unknown Payload" };
+  } else {
+    response = { text: "Unknown Payload" };
+  }
   // Send the message to acknowledge the postback
   console.log("calling callsendAPI function");
   return await callSendAPI(senderPsid, response);

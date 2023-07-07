@@ -21,10 +21,6 @@ function callSendAPI(senderPsid, response) {
       // Send the HTTP request to the Messenger Platform
       console.log("sending request... 🤓");
 
-      if (requestBody.message.text == "Unknown Payload") {
-        reject("Unknown Payload");
-        return;
-      } else {
         request(
           {
             uri: "https://graph.facebook.com/v16.0/me/messages",
@@ -49,7 +45,6 @@ function callSendAPI(senderPsid, response) {
             }
           }
         );
-      }
     } catch (err) {
       reject(err);
     }

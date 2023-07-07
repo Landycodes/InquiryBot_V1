@@ -21,8 +21,8 @@ module.exports = {
           webhookEvent = entry.standby[0];
           console.log("------------STANDBY----------");
         }
-        console.log(webhookEvent);
-        console.log("_________________________");
+        // console.log(webhookEvent);
+        // console.log("_________________________");
         //comment out rest of post request when testing locally
         // Get the sender PSID
         let senderPsid = webhookEvent.sender.id;
