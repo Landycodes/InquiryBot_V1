@@ -47,7 +47,9 @@ module.exports = {
         } else if (webhookEvent.postback) {
           console.log("POSTBACK");
           console.log(webhookEvent.postback.payload);
-          handlePostback(senderPsid, webhookEvent.postback);
+          handlePostback(senderPsid, webhookEvent.postback).then(() =>
+            res.status(200).send("EVENT_RECEIVED")
+          );
           // .then((data) => {
           //   console.log(data);
           //   if (data && !data.error) {
@@ -64,7 +66,7 @@ module.exports = {
       });
 
       // Returns a '200 OK' response to all requests
-      res.status(200).send("EVENT_RECEIVED");
+      // res.status(200).send("EVENT_RECEIVED");
     } else {
       // Returns a '404 Not Found' if event is not from a page subscription
       res.sendStatus(404);
