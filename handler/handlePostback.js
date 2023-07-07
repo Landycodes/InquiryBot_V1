@@ -16,11 +16,11 @@ async function handlePostback(senderPsid, receivedPostback) {
   // Set the response based on the postback payload
   switch (payload) {
     case "GET_STARTED":
+      await persistent_menu(senderPsid, true);
       await welcomeUser(senderPsid);
-      persistent_menu(senderPsid, true);
       break;
     case "PERSON":
-      persistent_menu(senderPsid, false);
+      await persistent_menu(senderPsid, false);
       break;
     default:
       console.log("Unknown Payload");
