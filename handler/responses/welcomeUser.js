@@ -6,7 +6,7 @@ const callSendAPI = require("../sendMessage/callSendAPI");
 const welcomeUser = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      //send a quick reply
+      //send a welcome message and a quick reply
       const Welcome = {
         text: "Welcome to AZtechmart! I am AZtechbot 🤖 How can I help you today?",
         quick_replies: [
@@ -29,6 +29,7 @@ const welcomeUser = (sender_psid) => {
       };
 
       await callSendAPI(sender_psid, Welcome);
+
       resolve("done");
     } catch (e) {
       reject(e);
