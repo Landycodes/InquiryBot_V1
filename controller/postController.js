@@ -32,7 +32,7 @@ module.exports = {
         if (webhookEvent.message) {
           console.log("MESSAGE");
           console.log(webhookEvent.message.text);
-          handleMessage(senderPsid, webhookEvent.message);
+          // handleMessage(senderPsid, webhookEvent.message);
           // .then((data) => {
           //   if (data && !data.error) {
           //     res.status(200).send("EVENT_RECEIVED");

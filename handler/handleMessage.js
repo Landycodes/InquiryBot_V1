@@ -44,7 +44,7 @@ async function handleMessage(senderPsid, receivedMessage) {
   }
 
   // Send the response message
-  return await callSendAPI(senderPsid, response);
+  // return await callSendAPI(senderPsid, response);
 }
 
 module.exports = handleMessage;
