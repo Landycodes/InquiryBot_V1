@@ -32,34 +32,38 @@ module.exports = {
         if (webhookEvent.message) {
           console.log("MESSAGE");
           console.log(webhookEvent.message.text);
-          handleMessage(senderPsid, webhookEvent.message);
-          // .then((data) => {
-          //   if (data && !data.error) {
-          //     res.status(200).send("EVENT_RECEIVED");
-          //   } else {
-          //     res.sendStatus(404);
-          //   }
-          // });
+          handleMessage(senderPsid, webhookEvent.message)
+            .then((data) => {
+              if (data && !data.error) {
+                res.status(200).send("EVENT_RECEIVED");
+              } else {
+                res.sendStatus(404);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(400).send("BAD_REQUEST");
+            });
         } else if (webhookEvent.postback) {
           console.log("POSTBACK");
           console.log(webhookEvent.postback.payload);
-          handlePostback(senderPsid, webhookEvent.postback);
-          // .then((data) => {
-          //   if (data && !data.error) {
-          //     res.status(200).send("EVENT_RECEIVED");
-          //   } else {
-          //     res.sendStatus(404);
-          //   }
-          // })
-          // .catch((err) => {
-          //   console.log(err);
-          //   res.status(400).send("BAD_REQUEST");
-          // });
+          handlePostback(senderPsid, webhookEvent.postback)
+            .then((data) => {
+              if (data && !data.error) {
+                res.status(200).send("EVENT_RECEIVED");
+              } else {
+                res.sendStatus(404);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(400).send("BAD_REQUEST");
+            });
         }
       });
 
       // Returns a '200 OK' response to all requests
-      res.status(200).send("EVENT_RECEIVED");
+      // res.status(200).send("EVENT_RECEIVED");
     } else {
       // Returns a '404 Not Found' if event is not from a page subscription
       res.sendStatus(404);
