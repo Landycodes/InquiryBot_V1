@@ -1,4 +1,4 @@
-const callSendAPI = require("./API/callSendAPI");
+const callSendAPI = require("./API/sendMessage");
 
 // Handles messages events
 async function handleMessage(senderPsid, receivedMessage) {

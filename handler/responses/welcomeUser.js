@@ -1,5 +1,5 @@
 // require("dotenv").config({ path: "../.env" });
-const sendMessage = require("../API/callSendAPI");
+const sendMessage = require("../API/sendMessage");
 
 // const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
