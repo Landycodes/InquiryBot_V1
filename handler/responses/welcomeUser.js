@@ -1,7 +1,4 @@
-// require("dotenv").config({ path: "../.env" });
 const sendMessage = require("../API/sendMessage");
-
-// const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 const welcomeUser = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
@@ -28,7 +25,6 @@ const welcomeUser = (sender_psid) => {
         //   },
         // ],
       };
-
       await sendMessage(sender_psid, Welcome);
 
       resolve("done");

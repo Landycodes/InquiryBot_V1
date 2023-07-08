@@ -1,6 +1,7 @@
 const welcomeUser = require("./responses/welcomeUser");
-const callSendAPI = require("./API/sendMessage");
+// const callSendAPI = require("./API/sendMessage");
 const persistent_menu = require("./API/persistentMenu");
+const introduce_conversation = require("./responses/introduceConvo");
 require("dotenv").config({ path: "../.env" });
 
 // Handles messaging_postbacks events
@@ -16,11 +17,17 @@ async function handlePostback(senderPsid, receivedPostback) {
   // Set the response based on the postback payload
   switch (payload) {
     case "GET_STARTED":
-      await persistent_menu(senderPsid, true);
-      await welcomeUser(senderPsid);
+      await Promise.all([
+        persistent_menu(senderPsid, true),
+        welcomeUser(senderPsid),
+      ]);
       break;
     case "PERSON":
-      await persistent_menu(senderPsid, false);
+      await Promise.all([
+        introduce_conversation(senderPsid),
+        persistent_menu(senderPsid, false),
+      ]);
+
       break;
     default:
       console.log("Unknown Payload");
