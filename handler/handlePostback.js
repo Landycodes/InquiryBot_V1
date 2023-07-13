@@ -8,8 +8,6 @@ require("dotenv").config({ path: "../.env" });
 async function handlePostback(senderPsid, receivedPostback) {
   console.log("----Running handlePostback()----");
 
-  // let response;
-
   // Get the payload for the postback
   let payload = receivedPostback.payload;
   console.log(`payload = ${payload}`);
@@ -27,22 +25,10 @@ async function handlePostback(senderPsid, receivedPostback) {
         introduce_conversation(senderPsid),
         persistent_menu(senderPsid, false),
       ]);
-
       break;
     default:
       console.log("Unknown Payload");
   }
-  //   if (payload === "GET_STARTED") {
-  //     welcomeUser(senderPsid);
-  //     return;
-  //   } else if (payload === "no") {
-  //     response = { text: "Oops, try sending another image." };
-  //   } else {
-  //     response = { text: "Unknown Payload" };
-  //   }
-  //   // Send the message to acknowledge the postback
-  //   console.log("calling callsendAPI function");
-  //   return await callSendAPI(senderPsid, response);
 }
 
 // handlePostback("6143614182425714", {

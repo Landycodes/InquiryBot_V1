@@ -14,7 +14,7 @@ let handleGetStarted = () => {
         greeting: [
           {
             locale: "default",
-            text: "Welcome {{user_first_name}}!",
+            text: "Welcome {{user_first_name}}! Click the 'Get started' button below to begin.",
           },
         ],
       };

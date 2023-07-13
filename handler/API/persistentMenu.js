@@ -20,9 +20,10 @@ function persistent_menu(sender_psid, input) {
                 payload: "SELL",
               },
               {
-                type: "postback",
+                type: "web_url",
                 title: "Shop Catalog",
-                payload: "STORE",
+                url: "https://www.facebook.com/marketplace/profile/100001957543354/?ref=share_attachment",
+                webview_height_ratio: "full",
               },
               {
                 type: "postback",
